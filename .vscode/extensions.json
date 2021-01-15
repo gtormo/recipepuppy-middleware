@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens",
+    "pflannery.vscode-versionlens",
+    "ms-vscode-remote.remote-containers"
+  ]
+}
