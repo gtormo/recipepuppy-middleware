@@ -20,7 +20,7 @@ export const userTestSuite = (): void => {
     });
 
     describe('should not fail', (): void => {
-      it(`POST ${baseUrl}`, async (): Promise<void> => {
+      it(`POST ${baseUrl}/signup`, async (): Promise<void> => {
         const response: Response = await request.post(`${baseUrl}/signup`).send({
           email: 'gonzalo@gmail.com',
           password: 'HolaMundo123.'
