@@ -12,7 +12,8 @@ const getUri = (options: IDb): string => {
 const getOptions = (): ConnectOptions => {
   return {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   } as ConnectOptions;
 };
 
