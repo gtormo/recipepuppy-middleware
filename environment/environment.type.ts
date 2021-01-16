@@ -3,4 +3,8 @@ export interface Environment {
   api: {
     port: number;
   };
+  crypto: {
+    algorithm: string;
+    secret: string;
+  };
 }
