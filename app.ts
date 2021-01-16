@@ -1,4 +1,4 @@
-import environment from './environment/environment';
+import { environment } from './environment/environment';
 
 // Modules
 import express, { Express } from 'express';

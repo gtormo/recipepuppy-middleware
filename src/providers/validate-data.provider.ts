@@ -1,6 +1,6 @@
 // Modules
 import validator from 'validator';
-import { isEmpty } from 'lodash';
+import { isEmpty, isBoolean } from 'lodash';
 
 // Types
 import { AppError } from 'error-type';
@@ -13,6 +13,16 @@ const validateEmail = (value: string): void => {
       httpStatus: 413,
       description: 'Email is not valid',
       error: new Error(`User email is not passing validator.isEmail`)
+    } as AppError;
+  }
+};
+
+const validateIsAdmin = (value: boolean): void => {
+  if (!isEmpty(value) && !isBoolean(value)) {
+    throw {
+      httpStatus: 413,
+      description: 'invalid value for isAdmin field',
+      error: new Error(`invalid value for isAdmin field`)
     } as AppError;
   }
 };
@@ -50,5 +60,6 @@ const validatePassword = (value: string): void => {
 
 export const ValidateDataProvider = {
   validateEmail,
-  validatePassword
+  validatePassword,
+  validateIsAdmin
 };

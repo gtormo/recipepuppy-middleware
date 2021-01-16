@@ -6,6 +6,9 @@
   "scripts": {
     "lint": "npx eslint . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
+    "test": "npx jest --runInBand",
+    "test:coverage": "npx jest --coverage --runInBand",
+    "test:watch": "node --inspect ./node_modules/.bin/jest --watchAll --runInBand",
     "build": "npx tsc",
     "start": "npm run build && node ./build/app.js",
     "clean": "rm -rf node_modules && rm -rf build",

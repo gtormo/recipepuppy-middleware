@@ -1,4 +1,4 @@
-import environment from '../../environment/environment';
+import { environment } from '../../environment/environment';
 
 // Modules
 import { Cipher, Decipher, createCipheriv, randomBytes, createDecipheriv } from 'crypto';
