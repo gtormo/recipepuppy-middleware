@@ -15,6 +15,7 @@ import { router as adminMiddleware } from './src/middlewares/admin.middleware';
 
 // Routes
 import { router as userRouter } from './src/router/user.router';
+import { router as recipeRouter } from './src/router/recipe/recipe.router';
 import { router as recipeConsumerRouter } from './src/router/recipe/consumer.router';
 import { router as recipeAdminRouter } from './src/router/recipe/admin.router';
 
@@ -28,6 +29,7 @@ app.use(bodyParserUrlencoded({ extended: false }));
 
 // Public routes
 app.use('/user', userRouter);
+app.use('/recipe', recipeRouter);
 
 // Protected routes
 app.use(userAuthMiddleware);
