@@ -26,9 +26,14 @@ app.use(compression());
 app.use(bodyParserJson());
 app.use(bodyParserUrlencoded({ extended: false }));
 
+// Public routes
 app.use('/user', userRouter);
+
+// Protected routes
 app.use(userAuthMiddleware);
 app.use('/consumer/recipe', recipeConsumerRouter);
+
+// Protected routes with admin permissions
 app.use(adminMiddleware);
 app.use('/admin/recipe', recipeAdminRouter);
 
