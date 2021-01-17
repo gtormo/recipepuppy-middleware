@@ -6,7 +6,7 @@ import axios, { AxiosResponse } from 'axios';
 import { get, toString } from 'lodash';
 
 // Types
-import { IRecipeApiResponse, IRecipeItem } from '../../types/recipe/recipe.type';
+import { IRecipeApiResponse, IRecipeItem } from '../../types/recipe.type';
 import { Request } from 'express';
 
 const getQueryParamsUri = (ingredients: string, recipeName: string, page: string): string => {

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 // Types
 import { Types } from 'mongoose';
-import { IRecipe } from '../types/recipe/recipe.type';
+import { IRecipe } from '../types/recipe.type';
 
 const schema: mongoose.Schema = new mongoose.Schema(
   {
@@ -17,7 +17,7 @@ const schema: mongoose.Schema = new mongoose.Schema(
     title: { type: String, required: true },
     ingredients: { type: Array, required: true },
     href: { type: String, required: true },
-    thumbnail: { type: String, required: true }
+    thumbnail: { type: String, required: false, default: '' }
   },
   { minimize: true, timestamps: true }
 );
