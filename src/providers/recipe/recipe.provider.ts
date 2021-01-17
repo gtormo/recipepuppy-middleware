@@ -10,7 +10,7 @@ import { IRecipeApiResponse, IRecipeItem } from '../../types/recipe/recipe.type'
 import { Request } from 'express';
 
 const getQueryParamsUri = (ingredients: string, recipeName: string, page: string): string => {
-  let uri: string = `/?i=${ingredients}&q=${recipeName}&page=${page}`;
+  const uri = `/?i=${ingredients}&q=${recipeName}&page=${page}`;
   return uri;
 };
 
