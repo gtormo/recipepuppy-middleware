@@ -14,4 +14,7 @@ export interface Environment {
     algorithm: string;
     secret: string;
   };
+  recipepuppy: {
+    apiUrl: string;
+  };
 }
