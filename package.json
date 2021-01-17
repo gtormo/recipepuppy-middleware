@@ -39,6 +39,7 @@
     "error-type": "git+ssh://git@github.com/gtormo/error-types.git#9ff4972",
     "express": "^4.17.1",
     "http-provider": "git+ssh://git@github.com/gtormo/http-provider.git#f95d15d",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "mongoose": "^5.11.12",
     "password-validator": "^5.1.1",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/lodash": "^4.14.167",
     "@types/mongoose": "^5.10.3",
     "@types/node": "^14.14.21",

@@ -7,6 +7,9 @@ export interface Environment {
     port: number;
   };
   db: IDb;
+  jwt: {
+    secret: string;
+  };
   crypto: {
     algorithm: string;
     secret: string;
