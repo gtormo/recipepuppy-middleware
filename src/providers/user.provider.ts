@@ -5,6 +5,7 @@ import { convertToAppError } from 'http-provider';
 // Providers
 import { ValidateDataProvider } from './validate-data.provider';
 import { CryptoProvider } from './crypto.provider';
+import { TokenProvider } from './token.provider';
 
 // Schemas
 import { UserSchema } from '../schemas/user.schema';
@@ -12,6 +13,8 @@ import { UserSchema } from '../schemas/user.schema';
 // Types
 import { Request } from 'express';
 import { AppError } from 'error-type';
+import { IEncrypt } from '../types/crypto.types';
+import { ITokenPayload } from '../types/token.types';
 import { ICreateUserInput, IUser } from '../types/user.types';
 
 export function getSanetizedRequestBody({
@@ -66,12 +69,48 @@ const signup = async (request: Request): Promise<Record<string, any>> => {
 
 const signin = async (request: Request): Promise<Record<string, any>> => {
   try {
-    const body = get(request, 'body', {});
-    return body;
+    const { email, password } = request.body as ICreateUserInput;
+
+    if (isNil(email) || isNil(password)) {
+      throw {
+        httpStatus: 413,
+        description: 'Email and password are non optional parameters',
+        error: new Error('Missing parameters')
+      } as AppError;
+    }
+
+    // If the db user does not exists, we need to check it
+    const user: IUser = await UserSchema.findOne({ email });
+
+    // If the email or password are not valid we throw an authorization error
+    if (!get(user, 'password', null) || !isValidUserAndPasswordFromDb(password, user.password)) {
+      throw {
+        httpStatus: 401,
+        description: 'Email or password does not match',
+        error: new Error('Invalid credentials')
+      };
+    }
+
+    const token = TokenProvider.sign({
+      _id: user._id,
+      email: user.email,
+      isAdmin: user.isAdmin
+    } as ITokenPayload);
+
+    return token;
   } catch (error) {
     return convertToAppError(error);
   }
 };
+
+/**
+ * It compares if both passwords are the same.
+ * It is possible because the db password is decrypted inside of this function.
+ */
+export function isValidUserAndPasswordFromDb(password: string, dbPassword: IEncrypt): boolean {
+  const dbPasswordDecrypted: string = CryptoProvider.decrypt(dbPassword);
+  return password === dbPasswordDecrypted;
+}
 
 export const UserProvider = {
   signup,

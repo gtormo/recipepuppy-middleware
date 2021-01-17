@@ -51,6 +51,18 @@ export const userTestSuite = (): void => {
         expect(response.status).toBe(200);
         expect(response.body).toEqual({ message: 'user created successfully' });
       });
+
+      it(`POST ${baseUrl}/signin`, async (): Promise<void> => {
+        const response: Response = await request.post(`${baseUrl}/signin`).send({
+          email: 'admin@gmail.com',
+          password: 'HolaMundo123.'
+        });
+
+        expect(response.status).toBe(200);
+        expect(response.body.token).toMatch(
+          /^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/
+        );
+      });
     });
 
     describe('should fail', (): void => {
@@ -131,6 +143,58 @@ export const userTestSuite = (): void => {
         expect(response.status).toBe(413);
         expect(response.body).toEqual({
           error: 'invalid value for isAdmin field'
+        });
+      });
+
+      it(`POST ${baseUrl}/signin missing body parameter`, async (): Promise<void> => {
+        const response: Response = await request.post(`${baseUrl}/signin`).send();
+
+        expect(response.status).toBe(413);
+        expect(response.body).toEqual({
+          error: 'Email and password are non optional parameters'
+        });
+      });
+
+      it(`POST ${baseUrl}/signin empty body parameter`, async (): Promise<void> => {
+        const response: Response = await request.post(`${baseUrl}/signin`).send({});
+
+        expect(response.status).toBe(413);
+        expect(response.body).toEqual({
+          error: 'Email and password are non optional parameters'
+        });
+      });
+
+      it(`POST ${baseUrl}/signin missing email parameter`, async (): Promise<void> => {
+        const response: Response = await request.post(`${baseUrl}/signin`).send({
+          password: 'HolaMundo123.'
+        });
+
+        expect(response.status).toBe(413);
+        expect(response.body).toEqual({
+          error: 'Email and password are non optional parameters'
+        });
+      });
+
+      it(`POST ${baseUrl}/signin missing password parameter`, async (): Promise<void> => {
+        const response: Response = await request.post(`${baseUrl}/signin`).send({
+          email: 'admin@gmail.com'
+        });
+
+        expect(response.status).toBe(413);
+        expect(response.body).toEqual({
+          error: 'Email and password are non optional parameters'
+        });
+      });
+
+      it(`POST ${baseUrl}/signin with other password`, async (): Promise<void> => {
+        const response: Response = await request.post(`${baseUrl}/signin`).send({
+          email: 'admin@gmail.com',
+          password: 'HolaMundo123456.'
+        });
+
+        expect(response.status).toBe(401);
+        expect(response.body).toEqual({
+          error: 'Email or password does not match'
         });
       });
     });
