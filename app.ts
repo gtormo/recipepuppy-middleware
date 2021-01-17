@@ -15,8 +15,8 @@ import { router as adminMiddleware } from './src/middlewares/admin.middleware';
 
 // Routes
 import { router as userRouter } from './src/router/user.router';
-import { router as recipeConsumerRouter } from './src/router/recipe-consumer.router';
-import { router as recipeAdminRouter } from './src/router/recipe-admin.router';
+import { router as recipeConsumerRouter } from './src/router/recipe/consumer.router';
+import { router as recipeAdminRouter } from './src/router/recipe/admin.router';
 
 // Setup REST Server
 export const app: Express = express();
