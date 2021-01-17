@@ -28,10 +28,10 @@ export interface IRecipe extends Document {
 }
 
 export interface ICreateRecipe {
-  hash: IRecipe['hash'];
-  userId: IRecipe['userId'];
-  title: IRecipe['title'];
-  href: IRecipe['href'];
-  ingredients: IRecipe['ingredients'];
-  thumbnail: IRecipe['thumbnail'];
+  hash?: IRecipe['hash'];
+  userId?: IRecipe['userId'];
+  title?: IRecipe['title'];
+  href?: IRecipe['href'];
+  ingredients?: IRecipe['ingredients'];
+  thumbnail?: IRecipe['thumbnail'];
 }
