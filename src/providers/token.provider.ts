@@ -39,7 +39,7 @@ const sign = (payload: ITokenPayload): Record<string, any> => {
 /**
  * This checks if the token is a valid one or even if it's expired
  */
-export function verify(token: string): Record<string, any> {
+const verify = (token: string): Record<string, any> => {
   try {
     if (isEmpty(token)) {
       throw {
@@ -69,7 +69,7 @@ export function verify(token: string): Record<string, any> {
         } as AppError)
       : error;
   }
-}
+};
 
 export const TokenProvider = {
   sign,

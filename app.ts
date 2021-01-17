@@ -9,9 +9,14 @@ import { urlencoded as bodyParserUrlencoded, json as bodyParserJson } from 'body
 // Providers
 import { DbProvider } from './src/providers/db.provider';
 
+// Middlewares
+import { router as userAuthMiddleware } from './src/middlewares/user-auth.middleware';
+import { router as adminMiddleware } from './src/middlewares/admin.middleware';
+
 // Routes
 import { router as userRouter } from './src/router/user.router';
-import { router as recipeRouter } from './src/router/recipe.router';
+import { router as recipeConsumerRouter } from './src/router/recipe-consumer.router';
+import { router as recipeAdminRouter } from './src/router/recipe-admin.router';
 
 // Setup REST Server
 export const app: Express = express();
@@ -22,7 +27,10 @@ app.use(bodyParserJson());
 app.use(bodyParserUrlencoded({ extended: false }));
 
 app.use('/user', userRouter);
-app.use('/recipe', recipeRouter);
+app.use(userAuthMiddleware);
+app.use('/consumer/recipe', recipeConsumerRouter);
+app.use(adminMiddleware);
+app.use('/admin/recipe', recipeAdminRouter);
 
 (async (): Promise<void> => {
   if (environment.autoInstance) {

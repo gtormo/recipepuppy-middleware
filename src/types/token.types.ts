@@ -11,3 +11,11 @@ export interface ITokenPayload {
   email: string;
   isAdmin: boolean;
 }
+
+export interface IDecodedTokenPayload {
+  _id: string;
+  email: string;
+  isAdmin: boolean;
+  iat: number;
+  exp: number;
+}
