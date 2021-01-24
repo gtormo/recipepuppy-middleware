@@ -92,3 +92,7 @@ npm start
 ```
 npm run docker:start
 ```
+
+### API Documentantion
+
+Import file `postman-api-doc.json` into postman to see all requests
