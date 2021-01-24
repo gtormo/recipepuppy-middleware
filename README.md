@@ -9,12 +9,17 @@
 - MongoDB
 - Docker & Docker Compose
 
-## Technologies Used
+## Prerequisites
+
+These packages are required:
 
 - NodeJS
-- TypeScript
-- MongoDB
-- Docker & Docker Compose
+- npm
+
+> if you want to run the project using containers, install:
+
+- docker
+- docker-compose
 
 ## Features
 
@@ -25,11 +30,11 @@
 - Admin creation of user recipes
 - Admin elimination of user recipes
 
-## Usage
+## Settings
 
 ### Node version
 
-- 14.15.1
+- This project has be coded using v14.15.1. However, older versions should be work as well.
 
 ### Env Variables
 
@@ -50,4 +55,40 @@ JWT_SECRET_KEY=741591d1-2n01-4572-afba-a85d47272159
 CRYPTO_SECRET_KEY=nPVG6sdmpNWjRTIqCc7rdxs01lwHyfr2
 CRYPTO_ALGORITHM=aes-256-ctr
 RECIPEPUPPY_API_URL=http://www.recipepuppy.com/api
+```
+
+### Manual Deployment
+
+Install required packages
+
+```
+npm install
+```
+
+Set up and connect to MongoDB server by updating the database environment variables:
+
+```
+
+MONGO_INITDB_ROOT_USERNAME=
+MONGO_INITDB_ROOT_PASSWORD=
+MONGO_INITDB_DATABASE=
+MONGO_CONNECTION_HOST=
+MONGO_CONNECTION_PORT=
+MONGO_CONNECTION_USERNAME=
+MONGO_CONNECTION_PASSWORD=
+MONGO_CONNECTION_DATABASE=
+```
+
+Run the server:
+
+```
+npm start
+```
+
+### Container Deployment
+
+> For this method it is necesary that the docker daemon is up
+
+```
+npm run docker:start
 ```
