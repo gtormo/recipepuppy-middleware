@@ -13,6 +13,7 @@
     "start": "npm run build && node ./build/app.js",
     "docker:logs": "docker-compose logs -f api",
     "docker:start": "docker-compose up -d && npm run docker:logs",
+    "docker:restart": "docker-compose restart && npm run docker:logs",
     "docker:prune": "docker-compose stop && docker-compose rm -f",
     "clean": "rm -rf node_modules && rm -rf build",
     "reinstall": "npm run clean && npm i"
