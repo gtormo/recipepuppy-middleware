@@ -105,6 +105,3 @@ dist
 
 # Build
 build/
-
-# Environment
-environment/environment.ts
