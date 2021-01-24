@@ -25,10 +25,11 @@ These packages are required:
 
 - Signup (as consumer or admin)
 - Consumer/Admin signin
+- Get recipes from Recipe Puppy
 - Consumer creation of recipes
-- Consumer elimination of recipes
-- Admin creation of user recipes
-- Admin elimination of user recipes
+- Consumer elimination of recipes: TODO
+- Admin list of user recipes: TODO
+- Admin elimination of user recipes: TODO
 
 ## Settings
 
