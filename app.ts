@@ -1,3 +1,7 @@
+// Load environment
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { environment } from './environment/environment';
 
 // Modules

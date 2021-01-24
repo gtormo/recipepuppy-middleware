@@ -5,8 +5,8 @@ import { connect, ConnectOptions, disconnect } from 'mongoose';
 import { IDb } from '../types/db.types';
 
 const getUri = (options: IDb): string => {
-  const { protocol, username, password, host, port, db } = options;
-  return `${protocol}${username}:${password}@${host}:${port}/${db}`;
+  const { username, password, host, port, db } = options;
+  return `mongodb://${username}:${password}@${host}:${port}/${db}`;
 };
 
 const getOptions = (): ConnectOptions => {
