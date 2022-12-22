@@ -45,7 +45,7 @@
     "error-type": "https://github.com/gtormo/error-types.git#9ff4972",
     "express": "^4.17.1",
     "http-provider": "https://github.com/gtormo/http-provider.git#5c5ec70",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "mongoose": "^5.11.12",
     "password-validator": "^5.1.1",
